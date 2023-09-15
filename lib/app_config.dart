@@ -16,13 +16,13 @@ void setupEnv(Environment env) {
     case Environment.prod:
       {
         isProduction = true;
-        baseUrl = 'https://myurl.com/';
+        baseUrl = 'http://api.weatherstack.com/';
         break;
       }
     case Environment.stag:
       {
         isProduction = true;
-        baseUrl = 'https://myurl.com/stag';
+        baseUrl = 'http://api.weatherstack.com/';
         break;
 
       }
