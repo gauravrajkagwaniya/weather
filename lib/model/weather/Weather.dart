@@ -129,7 +129,7 @@ class Current {
   int? windDegree;
   String? windDir;
   int? pressure;
-  int? precip;
+  dynamic? precip;
   int? humidity;
   int? cloudcover;
   int? feelslike;

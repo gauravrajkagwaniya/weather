@@ -10,7 +10,7 @@ import '../model/app_error.dart';
 String BASE_URL = baseUrl;
 
 abstract class APIService {
-  Future<Map<String, dynamic>?> get(String url,
+  Future <dynamic?> get(String url,
       // ignore: avoid_init_to_null
       {Map<String, String?>? params = null,
       bool useAuthHeaders = true,
@@ -20,9 +20,11 @@ abstract class APIService {
       var data = await http.get(
           Uri.parse(_getUrlWithParams(url, params: params, useBaseUrl: useBaseUrl)),
           headers: await _getHeaders(useAuthHeaders: useAuthHeaders, customHeader: customHeader));
-      print("data $data");
+      print("data ${data.body}");
+      // return jsonDecode(data.body)??null;
       return _getResponse(data);
     } catch (e) {
+      print("error $e");
       return null;
     }
   }

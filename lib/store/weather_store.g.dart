@@ -9,6 +9,13 @@ part of 'weather_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$WeatherStore on _WeatherStore, Store {
+  Computed<Weather>? _$weatherListComputed;
+
+  @override
+  Weather get weatherList =>
+      (_$weatherListComputed ??= Computed<Weather>(() => super.weatherList,
+              name: '_WeatherStore.weatherList'))
+          .value;
   Computed<bool>? _$isThemeDarkComputed;
 
   @override
@@ -17,19 +24,35 @@ mixin _$WeatherStore on _WeatherStore, Store {
               name: '_WeatherStore.isThemeDark'))
           .value;
 
-  late final _$weatherListAtom =
-      Atom(name: '_WeatherStore.weatherList', context: context);
+  late final _$searchCityAtom =
+      Atom(name: '_WeatherStore.searchCity', context: context);
 
   @override
-  List<Weather> get weatherList {
-    _$weatherListAtom.reportRead();
-    return super.weatherList;
+  List<String> get searchCity {
+    _$searchCityAtom.reportRead();
+    return super.searchCity;
   }
 
   @override
-  set weatherList(List<Weather> value) {
-    _$weatherListAtom.reportWrite(value, super.weatherList, () {
-      super.weatherList = value;
+  set searchCity(List<String> value) {
+    _$searchCityAtom.reportWrite(value, super.searchCity, () {
+      super.searchCity = value;
+    });
+  }
+
+  late final _$weatherdataAtom =
+      Atom(name: '_WeatherStore.weatherdata', context: context);
+
+  @override
+  Weather get weatherdata {
+    _$weatherdataAtom.reportRead();
+    return super.weatherdata;
+  }
+
+  @override
+  set weatherdata(Weather value) {
+    _$weatherdataAtom.reportWrite(value, super.weatherdata, () {
+      super.weatherdata = value;
     });
   }
 
@@ -68,8 +91,10 @@ mixin _$WeatherStore on _WeatherStore, Store {
   @override
   String toString() {
     return '''
-weatherList: ${weatherList},
+searchCity: ${searchCity},
+weatherdata: ${weatherdata},
 themedata: ${themedata},
+weatherList: ${weatherList},
 isThemeDark: ${isThemeDark}
     ''';
   }
