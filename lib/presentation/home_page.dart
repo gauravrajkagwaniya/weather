@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   ))
             ]),
             body: Column(children: [
-              Column(
+              ListView(shrinkWrap: true,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   store.weatherList.current == null
                       ? Container(
-                          child: Text("data not available"),
+                          child: Center(child: Text("data not available")),
                         )
                       : Column(
                           children: [
