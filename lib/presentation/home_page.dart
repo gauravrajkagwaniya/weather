@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8.0),
                   child: searchTextField(store),
                 ),
-                store.weatherList == null
+                store.weatherList.current == null
                     ? Container(
                         child: Text("data not available"),
                       )
